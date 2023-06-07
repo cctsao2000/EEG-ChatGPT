@@ -1,0 +1,189 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>test2</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="color.css">
+</head>
+<body>
+    <section style="margin-top: 30px;">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="card">
+                        <h5 class="card-header">
+                            Computational Thinking Test
+                            <!-- 倒計時 -->
+                            <label id="timer" class="float-right"></label>
+                        </h5>
+
+                        <!-- Index -->
+                        <div class="card-body" id="index_page">
+    
+                            <!-- 第一階段 -->
+                            <div class="row">
+                                <div class="col-12">
+                                    <h4 class="form-header" id="label_section"> 第三階段 </h4>
+                                </div>
+                            </div>
+
+                            <!-- 說明文字 -->
+                            <div class="row">
+                                <div class="col-12">
+                                    <p>
+                                        此測驗測驗共分為三階段，此為第三階段。<br>
+                                        第三階段共 8 題選擇題，皆為單選題。<br>
+                                        此階段答題時間共 30分鐘，按下「開始答題」即開始計算時間。<br>
+                                    </p>
+                                    <p>
+                                        每題答題按下「選擇答案」後，會出現機器人提示，綠色背景的選項為機器人最肯定的答案、黃色背景為機器人次肯定的答案，紅色背景為機器人認為錯誤的答案。<br>
+                                        點擊選項中的「解釋」按鈕後，機器人將解釋為何選擇此選項，然而機器人提示不一定正確，受測者可自行選擇是否更改答案。<br>
+                                        若認為你選擇的答案正確，但機器人提供之解釋邏輯有誤，請勾選下方之「此答案正確但解釋的邏輯有誤」方格，並「送出答案」。<br>
+                                        第二次答題按下「送出答案」後，此題將不得再更改答案。
+                                    </p>
+                                    <img src="img/example.png" width="100%" height="40%">
+                                    <!--<p>機器人提示範例如下：</p>
+                                    <div class="row" style="margin: 10px;">
+                                        <img src="img/robot.png" width="50" height="50">
+                                            <div class="msg alert alert-warning" id="msg_id" role="alert">
+                                            機器人認為答案是 A
+                                        </div>
+                                    </div>-->
+                                    <p>
+                                        以上說明閱讀完畢，即可開始答題。<br>
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- 開始答題按鈕 -->
+                            <div>
+                                <div class="col-12">
+                                    <input type="button" id="start" value="開始答題" class="btn btn-primary btn-user btn-block"/>
+                                </div>
+                            </div>
+
+                        </div>
+                        <!-- End of Index -->
+                        
+                        <!-- Test -->
+                        <div class="card-body" id="test_page" style="display: none;">
+                            
+                            <!-- 第三階段 -->
+                            <div class="row">
+                                <div class="col-12">
+                                    <h4 class="form-header" id="label_section"> 第三階段 </h4>
+                                </div>
+                            </div>
+
+                            <!-- 題號 -->
+                            <div class="row">
+                                <div class="col-12">
+                                    <label id="question"></label>
+                                </div>
+                            </div>
+
+                            <!-- 題目圖片 -->
+                            <div class="row justify-content-center">
+                                <div class="col">
+                                    <img id="img" width="100%" height="auto">
+                                </div>
+                            </div>
+
+                             <!-- 選項 -->
+                             <div class="row">
+                                <div class="col-md-6 form-group form-radio-item" id="option1">
+                                    <input type="radio"  class="form-radio" id="input_14_1" name="radio" value="A" required>
+                                        <label id="label_input_14_1" for="input_14_1"></label><br>
+                                    <button style="display: none;" id="toggle1">解釋</button>
+                                    <p style="display: none;" id="ex1">這邊是詳細的解釋內容</p>
+                                    <!--<button style="display: none;" id="re1">report</button>-->
+                                    <div style="display: none;" id="re1">
+                                        <input type="checkbox" id="scales1" name="scales1">
+                                        <label for="scales1">此題答案正確但解釋的邏輯有誤</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 form-group form-radio-item" id="option2">
+                                    <input type="radio"  class="form-radio" id="input_14_2" name="radio" value="B" required>
+                                        <label id="label_input_14_2" for="input_14_2"></label><br>
+                                    <button style="display: none;" id="toggle2">解釋</button>
+                                    <p style="display: none;" id="ex2">這邊是詳細的解釋內容</p>
+                                    <!--<button style="display: none;" id="re2">report</button>-->
+                                    <div style="display: none;" id="re2">
+                                        <input type="checkbox" id="scales2" name="scales2">
+                                        <label for="scales2">此題答案正確但解釋的邏輯有誤</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 form-group form-radio-item" id="option3">
+                                    <input type="radio"  class="form-radio" id="input_14_3" name="radio" value="C" required>
+                                        <label id="label_input_14_3" for="input_14_3"></label><br>
+                                    <button style="display: none;" id="toggle3">解釋</button>
+                                    <p style="display: none;" id="ex3">這邊是詳細的解釋內容</p>
+                                   <!-- <button style="display: none;" id="re3">report</button>-->
+                                   <div style="display: none;" id="re3">
+                                    <input type="checkbox" id="scales3" name="scales3">
+                                    <label for="scales3">此題答案正確但解釋的邏輯有誤</label>
+                                   </div>
+                                </div>
+                                <div class="col-md-6 form-group form-radio-item" id="option4">
+                                    <input type="radio"  class="form-radio" id="input_14_4" name="radio" value="D" required>
+                                        <label id="label_input_14_4" for="input_14_4"></label><br>
+                                    <button style="display: none;" id="toggle4">解釋</button>
+                                    <p style="display: none;" id="ex4">這邊是詳細的解釋內容</p>
+                                   <!-- <button style="display: none;" id="re4">report</button>-->
+                                   <div style="display: none;" id="re4">
+                                    <input type="checkbox" id="scales4" name="scales4">
+                                    <label for="scales4">此題答案正確但解釋的邏輯有誤</label>
+                                   </div>
+                                </div>
+                            </div>
+
+
+                            <!-- 機器人選擇 -->
+                            <div id="robot">
+                                <div class="msg alert alert-warning" id="msg_id" style="display: none" role="alert"></div>
+                            </div>
+
+                            <!-- 送出按鈕 -->
+                            <div>
+                                <div class="col-12">
+                                    <input id="submit" name="submit" type="submit" class="btn btn-success" value="Submit">
+                                </div>
+                            </div>
+
+                        </div>
+                        <!-- End of Test -->
+
+                        <!-- Ending -->
+                        <div class="card-body text-center" id="ending_page" style="display: none;">
+                            <!-- 註明第一階段、第二階段、全部 -->
+                            <h4 class="card-title">測驗結束</h4>
+                            <!-- 如果提前完成請告知實驗工作人員 -->
+                            <p class="card-text">
+                                感謝您的參與<br>
+                                Thank you for your participation
+                            </p>
+                            <!-- 請點選下方連結完成問卷 -->
+                            <a class="btn btn-primary" id="form"> 請協助填寫問卷</a>
+                            <p id="correct"></p>
+                        </div>
+
+
+                        <div class="card-footer text-muted text-center">
+                            NCCU MIS HAILab
+                        </div>
+                        <!-- End of Ending -->
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="test.js"></script>
+</body>
+</html>
